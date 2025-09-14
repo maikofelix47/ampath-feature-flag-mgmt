@@ -7,6 +7,7 @@ import { DatabaseModule } from './core/database/db.module';
 import { FeatureFlagModule } from './feature-flag/feature-flag.module';
 import { AttributeModule } from './attribute/attribute.module';
 import { OperatorModule } from './operator/operator.module';
+import { RuleModule } from './rule/rule.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { OperatorModule } from './operator/operator.module';
     FeatureFlagModule,
     AttributeModule,
     OperatorModule,
+    RuleModule,
   ],
   controllers: [AppController],
   providers: [AppService],

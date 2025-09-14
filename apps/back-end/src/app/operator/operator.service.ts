@@ -13,6 +13,11 @@ export class OperatorService {
   findAll() {
     return this.operatorRepository.find();
   }
+  findByUuid(uuid: string) {
+    return this.operatorRepository.findOneBy({
+      uuid: uuid,
+    });
+  }
   async create(createOperatorDto: CreateOperatorDto) {
     const payload = {
       ...createOperatorDto,

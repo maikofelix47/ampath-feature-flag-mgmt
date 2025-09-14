@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { FeatureFlagEntity } from '../../feature-flag/entity/feature-flag.entity';
 import { AttributeEntity } from '../../attribute/entity/attribute.entity';
 import { OperatorEntity } from '../../operator/entity/operator.entity';
+import { RuleEntity } from '../../rule/entity/rule.entity';
 
 @Module({
   imports: [
@@ -16,7 +17,12 @@ import { OperatorEntity } from '../../operator/entity/operator.entity';
         username: configService.get<string>('DATABASE_USER'),
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_NAME'),
-        entities: [FeatureFlagEntity, AttributeEntity, OperatorEntity],
+        entities: [
+          FeatureFlagEntity,
+          AttributeEntity,
+          OperatorEntity,
+          RuleEntity,
+        ],
         synchronize: configService.get<boolean>('SYNCHRONIZE_DATABASE'),
       }),
       inject: [ConfigService],

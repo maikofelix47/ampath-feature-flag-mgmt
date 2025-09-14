@@ -13,6 +13,11 @@ export class AttributeService {
   findAll() {
     return this.attributeRepository.find();
   }
+  findByUuid(uuid: string) {
+    return this.attributeRepository.findOneBy({
+      uuid: uuid,
+    });
+  }
   async create(createAttributeDto: CreateAttributeDto) {
     const payload = {
       ...createAttributeDto,

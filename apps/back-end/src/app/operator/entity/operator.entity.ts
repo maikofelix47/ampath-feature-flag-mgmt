@@ -3,9 +3,11 @@ import {
   CreateDateColumn,
   Entity,
   Generated,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { RuleEntity } from '../../rule/entity/rule.entity';
 
 @Entity({
   name: 'operator',
@@ -47,4 +49,7 @@ export class OperatorEntity {
   @Column({ unique: true })
   @Generated('uuid')
   uuid: string;
+
+  @OneToMany(() => RuleEntity, (rule) => rule.operator)
+  rules: RuleEntity[];
 }

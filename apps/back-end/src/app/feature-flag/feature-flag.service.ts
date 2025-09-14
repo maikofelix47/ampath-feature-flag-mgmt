@@ -13,6 +13,11 @@ export class FeatureFlagService {
   findAll() {
     return this.featureFlagRepository.find();
   }
+  findByUuid(uuid: string) {
+    return this.featureFlagRepository.findOneBy({
+      uuid: uuid,
+    });
+  }
   async create(createFetaureFlagDto: CreateFetaureFlagDto) {
     const payload = {
       ...createFetaureFlagDto,
