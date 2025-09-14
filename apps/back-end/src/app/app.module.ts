@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { DatabaseModule } from './core/database/db.module';
 import { FeatureFlagModule } from './feature-flag/feature-flag.module';
+import { AttributeModule } from './attribute/attribute.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { FeatureFlagModule } from './feature-flag/feature-flag.module';
     }),
     DatabaseModule,
     FeatureFlagModule,
+    AttributeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
