@@ -6,6 +6,7 @@ import * as Joi from 'joi';
 import { DatabaseModule } from './core/database/db.module';
 import { FeatureFlagModule } from './feature-flag/feature-flag.module';
 import { AttributeModule } from './attribute/attribute.module';
+import { OperatorModule } from './operator/operator.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { AttributeModule } from './attribute/attribute.module';
     DatabaseModule,
     FeatureFlagModule,
     AttributeModule,
+    OperatorModule,
   ],
   controllers: [AppController],
   providers: [AppService],

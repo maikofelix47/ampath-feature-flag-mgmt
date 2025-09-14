@@ -8,17 +8,17 @@ import {
 } from 'typeorm';
 
 @Entity({
-  name: 'feature-flag',
+  name: 'operator',
 })
-export class FeatureFlagEntity {
+export class OperatorEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ unique: true })
   name: string;
 
-  @Column({ nullable: false, default: false })
-  on: boolean;
+  @Column()
+  description: string;
 
   @CreateDateColumn()
   createdAt: Date;

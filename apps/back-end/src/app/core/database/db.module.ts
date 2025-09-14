@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FeatureFlagEntity } from '../../feature-flag/entity/feature-flag.entity';
 import { AttributeEntity } from '../../attribute/entity/attribute.entity';
+import { OperatorEntity } from '../../operator/entity/operator.entity';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { AttributeEntity } from '../../attribute/entity/attribute.entity';
         username: configService.get<string>('DATABASE_USER'),
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_NAME'),
-        entities: [FeatureFlagEntity, AttributeEntity],
+        entities: [FeatureFlagEntity, AttributeEntity, OperatorEntity],
         synchronize: configService.get<boolean>('SYNCHRONIZE_DATABASE'),
       }),
       inject: [ConfigService],
