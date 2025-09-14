@@ -6,6 +6,9 @@ import { CreateRuleDto } from './dto/create-rule.dto';
 import { FeatureFlagService } from '../feature-flag/feature-flag.service';
 import { AttributeService } from '../attribute/attribute.service';
 import { OperatorService } from '../operator/operator.service';
+import { FeatureFlagContext } from './types';
+import { FeatureFlagEntity } from '../feature-flag/entity/feature-flag.entity';
+import { evaluateFeatureFlag } from '../utils/feature-flag-evaluator';
 
 @Injectable()
 export class RuleService {
@@ -37,5 +40,21 @@ export class RuleService {
     const resp = await this.ruleRepository.save(entity);
 
     return resp;
+  }
+  async getFeatureFlagValue(
+    featureFlagName: string,
+    context: FeatureFlagContext
+  ) {
+    const rules = await this.ruleRepository.findBy({
+      featureFlag: {
+        name: featureFlagName,
+      },
+    });
+    const result = this.evaluateFlag(context, rules);
+    return result;
+  }
+
+  private evaluateFlag(context: FeatureFlagContext, rules: RuleEntity[]) {
+    return evaluateFeatureFlag(context, rules);
   }
 }
